@@ -15,7 +15,7 @@ export const Tab = styled.div<{ current: boolean }>`
   border-radius: 4px 4px 0 0;
   background-color: blueviolet;
   font-weight: bold;
-  transition: all 0.5s linear;
+  transition: all 0.2s linear;
 
   ${({ current, theme }) =>
     current && `color: blueviolet; background-color: ${theme.background}`};

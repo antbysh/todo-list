@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { Container, SearchInput, Wrapper } from "./MainView.styles";
 import { TasksList } from "../../components/tasksList/TasksList";
@@ -55,7 +57,9 @@ export const MainView = ({ handleThemeChange }: MainViewTypes) => {
         />
         <Button callback={handleThemeChange}>Switch Theme</Button>
       </Wrapper>
-      <TasksList data={taskData(tabData)} currentTab={currentTab} />
+      <DndProvider backend={HTML5Backend}>
+        <TasksList data={taskData(tabData)} currentTab={currentTab} />
+      </DndProvider>
     </Container>
   );
 };
