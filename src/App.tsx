@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, globalStyles } from "./utils/Theme";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const GlobalStyle = globalStyles;
 
   const handleThemeChange = () => {

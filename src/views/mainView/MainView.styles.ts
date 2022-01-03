@@ -6,7 +6,7 @@ export const Container = styled.div`
   min-height: 100vh;
   flex-direction: column;
   background-color: ${({ theme }: { theme: ThemeTypes }) => theme.background};
-  transition: all 0.5s linear;
+  transition: all 0.2s linear;
 `;
 
 export const Wrapper = styled.div`
@@ -33,7 +33,7 @@ export const SearchInput = styled.input`
   border-bottom: 1px solid blueviolet;
   background-color: ${({ theme }: { theme: ThemeTypes }) => theme.background};
   color: ${({ theme }: { theme: ThemeTypes }) => theme.text};
-  transition: all 0.5s linear;
+  transition: all 0.2s linear;
 
   &:focus {
     outline: none;

@@ -19,7 +19,7 @@ export const StyledInput = styled.input<{ error: boolean }>`
   padding: 2px 4px;
   background-color: ${({ theme }: { theme: ThemeTypes }) => theme.background};
   color: ${({ theme }: { theme: ThemeTypes }) => theme.text};
-  transition: all 0.5s linear;
+  transition: all 0.2s linear;
 
   ${({ error }) => error && "border-bottom: 1px solid red"};
 

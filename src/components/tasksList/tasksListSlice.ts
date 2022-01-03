@@ -49,6 +49,9 @@ export const tasksListSlice = createSlice({
           : task
       );
     },
+    updateTasksOrder: (state, action: PayloadAction<TaskType[]>) => {
+      state.tasks = action.payload;
+    },
   },
 });
 
@@ -57,12 +60,14 @@ export const {
   deleteTask,
   changeTaskStatus,
   editTask,
+  updateTasksOrder,
 } = tasksListSlice.actions;
 
 export const selectAllTasks = (state: RootState) => state.tasksList.tasks;
 
-export const selectCompletedTasks = (state: RootState) =>
-  state.tasksList.tasks.filter(({ status }) => status === "complete");
+export const selectCompletedTasks = (state: RootState) => {
+  return state.tasksList.tasks.filter(({ status }) => status === "complete");
+};
 
 export const selectUncompletedTasks = (state: RootState) =>
   state.tasksList.tasks.filter(({ status }) => status === "incomplete");

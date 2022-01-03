@@ -13,7 +13,7 @@ export const Container = styled.button<{ fill?: string }>`
   margin: 0 2px;
   cursor: pointer;
   max-height: 24px;
-  transition: all 0.5s linear;
+  transition: all 0.2s linear;
 
   &:not(:disabled):hover {
     opacity: 0.7;
