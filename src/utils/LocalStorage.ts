@@ -1,4 +1,4 @@
-import { TaskType } from "../components/tasksList/tasksListSlice";
+import { TaskTypes } from "../components/task/Task";
 
 export const loadState = () => {
   try {
@@ -14,7 +14,7 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state: { tasksList: { tasks: TaskType[] } }) => {
+export const saveState = (state: { tasksList: { tasks: TaskTypes[] } }) => {
   try {
     localStorage.setItem("state", JSON.stringify(state));
   } catch (e) {

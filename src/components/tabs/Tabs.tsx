@@ -1,6 +1,6 @@
 import React from "react";
-import { TABS } from "./tabs.constants";
 
+import { TABS } from "./tabs.constants";
 import { Container, Tab } from "./Tabs.styles";
 
 interface TabsTypes {
@@ -12,7 +12,12 @@ export const Tabs = ({ setTab, activeTab }: TabsTypes) => {
   return (
     <Container>
       {Object.values(TABS).map((tab) => (
-        <Tab current={tab === activeTab} onClick={() => setTab(tab)} key={tab}>
+        <Tab
+          current={tab === activeTab}
+          onClick={() => setTab(tab)}
+          key={tab}
+          aria-label={tab}
+        >
           {tab}
         </Tab>
       ))}

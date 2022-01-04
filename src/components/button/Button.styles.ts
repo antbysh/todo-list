@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { ThemeTypes } from "../../utils/Theme";
 
-export const Container = styled.button<{ fill?: string }>`
+export const Container = styled.button<{ fill?: string; border?: string }>`
   background-color: ${({ theme }: { theme: ThemeTypes }) => theme.background};
   color: ${({ theme }: { theme: ThemeTypes }) => theme.text};
-  border: 1px solid blueviolet;
+  border: 1px solid ${({ border }) => (border ? border : "blueviolet")};
   border-radius: 4px;
   display: flex;
   align-items: center;

@@ -31,7 +31,8 @@ interface DragItem {
 export const Task = ({ title, id, status, dragMode }: TaskTypes) => {
   const dispatch = useAppDispatch();
   const [editMode, setEditMode] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLLIElement>(null);
+  const isCompleted = status === "complete";
 
   const handleDeleteTask = (targetId: string) => {
     dispatch(deleteTask(targetId));
@@ -97,17 +98,23 @@ export const Task = ({ title, id, status, dragMode }: TaskTypes) => {
       ref={ref}
       data-handler-id={handlerId}
       isDragging={isDragging}
+      data-task-completed={isCompleted}
     >
-      <TaskTitle onClick={() => setEditMode(true)}>{title}</TaskTitle>
+      <TaskTitle onClick={() => setEditMode(true)} isCompleted={isCompleted}>
+        {title}
+      </TaskTitle>
       <ActionWrapper>
-        <Button callback={() => setEditMode(true)}>
+        <Button callback={() => setEditMode(true)} ariaLabel={"Edit task"}>
           <EditIcon />
         </Button>
-        <Button callback={() => handleDeleteTask(id)}>
+        <Button callback={() => handleDeleteTask(id)} ariaLabel={"Delete task"}>
           <TrashIcon />
         </Button>
-        <Button callback={() => handleChangeStatus(id)}>
-          {status === "complete" ? <CompleteIcon /> : <IncompleteIcon />}
+        <Button
+          callback={() => handleChangeStatus(id)}
+          ariaLabel={"Change task status"}
+        >
+          {isCompleted ? <CompleteIcon /> : <IncompleteIcon />}
         </Button>
       </ActionWrapper>
     </TaskContainer>
