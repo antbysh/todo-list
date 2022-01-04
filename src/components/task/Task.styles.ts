@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ThemeTypes } from "../../utils/Theme";
 
-export const TaskContainer = styled.div<{ isDragging: boolean }>`
+export const TaskContainer = styled.li<{ isDragging: boolean }>`
   border: 1px solid blueviolet;
   border-radius: 4px;
   box-shadow: 2px 2px 1px ${({ theme }: { theme: ThemeTypes }) => theme.shadow};
@@ -15,15 +15,21 @@ export const TaskContainer = styled.div<{ isDragging: boolean }>`
   cursor: move;
 `;
 
-export const TaskTitle = styled.span`
+export const TaskTitle = styled.span<{
+  isCompleted: boolean;
+  theme: ThemeTypes;
+}>`
   display: flex;
   padding: 2px 4px;
   cursor: text;
   min-width: 30%;
-  color: ${({ theme }: { theme: ThemeTypes }) => theme.text};
+  color: ${({ theme, isCompleted }) => (isCompleted ? "gray" : theme.text)};
+  text-decoration: ${({ isCompleted }) =>
+    isCompleted ? "line-through" : "none"};
 `;
 
 export const ActionWrapper = styled.div`
   display: flex;
   align-items: center;
+  cursor: default;
 `;

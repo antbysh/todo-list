@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { ThemeProvider } from "styled-components";
 
 import { MainView } from "./views/mainView/MainView";
-import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, globalStyles } from "./utils/Theme";
 
 function App() {

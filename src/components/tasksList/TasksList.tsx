@@ -29,7 +29,7 @@ export const TasksList = ({ data, currentTab }: TasksListTypes) => {
         )
       );
     },
-    [data]
+    [data, dispatch]
   );
 
   return (

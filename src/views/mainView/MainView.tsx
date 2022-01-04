@@ -55,7 +55,7 @@ export const MainView = ({ handleThemeChange }: MainViewTypes) => {
           onChange={({ target }) => setSearchValue(target.value)}
           placeholder={"Search for tasks"}
         />
-        <Button callback={handleThemeChange}>Switch Theme</Button>
+        <Button callback={handleThemeChange} ariaLabel={'Switch theme'}>Switch Theme</Button>
       </Wrapper>
       <DndProvider backend={HTML5Backend}>
         <TasksList data={taskData(tabData)} currentTab={currentTab} />

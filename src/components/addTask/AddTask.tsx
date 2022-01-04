@@ -78,7 +78,7 @@ export const AddTask = ({ editMode, currentTab }: AddTaskTypes) => {
   };
 
   return (
-    <Container onClick={() => inputRef.current?.focus()}>
+    <Container onClick={() => inputRef.current?.focus()} isDragging={false}>
       <StyledInput
         ref={inputRef}
         value={inputValue}
@@ -89,11 +89,16 @@ export const AddTask = ({ editMode, currentTab }: AddTaskTypes) => {
         autoFocus={Boolean(editMode)}
       />
       {editMode && (
-        <Button callback={exitEditMode} fill={"red"}>
+        <Button callback={exitEditMode} fill={"red"} border={"red"}>
           <CancelIcon />
         </Button>
       )}
-      <Button disabled={!inputValue.length} callback={submitAction}>
+      <Button
+        disabled={!inputValue.length}
+        callback={submitAction}
+        fill={"green"}
+        border={"green"}
+      >
         <AddIcon />
       </Button>
     </Container>

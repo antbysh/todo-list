@@ -1,15 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import { TaskTypes } from "../task/Task";
 
 export interface TasksState {
-  tasks: TaskType[];
+  tasks: TaskTypes[];
   status: "idle" | "loading" | "failed";
-}
-
-export interface TaskType {
-  title: string;
-  id: string;
-  status: "complete" | "incomplete";
 }
 
 const initialState: TasksState = {
@@ -21,7 +16,7 @@ export const tasksListSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    addTask: (state, action: PayloadAction<TaskType>) => {
+    addTask: (state, action: PayloadAction<TaskTypes>) => {
       state.tasks = [...state.tasks, action.payload];
     },
     deleteTask: (state, action: PayloadAction<string>) => {
@@ -49,7 +44,7 @@ export const tasksListSlice = createSlice({
           : task
       );
     },
-    updateTasksOrder: (state, action: PayloadAction<TaskType[]>) => {
+    updateTasksOrder: (state, action: PayloadAction<TaskTypes[]>) => {
       state.tasks = action.payload;
     },
   },
