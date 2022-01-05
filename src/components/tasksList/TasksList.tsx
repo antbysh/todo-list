@@ -2,17 +2,18 @@ import React, { useCallback } from "react";
 import update from "immutability-helper";
 
 import { Container } from "./TasksList.styles";
-import { Task, TaskTypes } from "../task/Task";
+import { Task } from "../task/Task";
 import { AddTask } from "../addTask/AddTask";
 import { useAppDispatch } from "../../app/hooks";
-import { updateTasksOrder } from "./tasksListSlice";
+import { updateTasksOrder } from "../../app/redux/reducers/tasksListSlice";
+import { TaskTypes } from "../task/task.types";
 
-export interface TasksListTypes {
+export interface TasksListProps {
   data: TaskTypes[];
   currentTab: string;
 }
 
-export const TasksList = ({ data, currentTab }: TasksListTypes) => {
+export const TasksList = ({ data, currentTab }: TasksListProps) => {
   const dispatch = useAppDispatch();
 
   const moveCard = useCallback(

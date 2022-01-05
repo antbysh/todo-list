@@ -2,9 +2,9 @@ import React, { ReactNode } from "react";
 
 import { Container } from "./Button.styles";
 
-interface ButtonTypes {
+interface ButtonProps {
   children: ReactNode;
-  callback: () => void;
+  onClick: () => void;
   disabled?: boolean;
   fill?: string;
   border?: string;
@@ -13,16 +13,16 @@ interface ButtonTypes {
 
 export const Button = ({
   children,
-  callback,
+  onClick,
   disabled,
   fill,
   border,
   ariaLabel,
-}: ButtonTypes) => {
+}: ButtonProps) => {
   return (
     <Container
       disabled={disabled}
-      onClick={callback}
+      onClick={onClick}
       fill={fill}
       border={border}
       aria-label={ariaLabel}

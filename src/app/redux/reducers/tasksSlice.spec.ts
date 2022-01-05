@@ -8,7 +8,7 @@ import tasksListReducer, {
   changeTaskStatus,
   updateTasksOrder,
 } from "./tasksListSlice";
-import { mockTask } from "../../mocks/task";
+import { mockTask } from "../../../mocks/task";
 
 describe("tasks list reducer", () => {
   const initialState: TasksState = {

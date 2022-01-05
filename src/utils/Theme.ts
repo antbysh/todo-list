@@ -1,19 +1,19 @@
 import { createGlobalStyle } from "styled-components";
 
-export interface ThemeTypes {
+interface ThemeTypes {
   text: string;
   background: string;
   shadow: string;
 }
 
-export const lightTheme = {
+export const lightTheme: ThemeTypes = {
   text: "black",
   background: "white",
   shadow: "lightgray",
 };
-export const darkTheme = {
+export const darkTheme: ThemeTypes = {
   text: "lightgray",
-  background: "#2c2e2c",
+  background: "#303134",
   shadow: "#202120",
 };
 

@@ -3,12 +3,12 @@ import React from "react";
 import { TABS } from "./tabs.constants";
 import { Container, Tab } from "./Tabs.styles";
 
-interface TabsTypes {
+interface TabsProps {
   setTab: (tab: string) => void;
   activeTab: string;
 }
 
-export const Tabs = ({ setTab, activeTab }: TabsTypes) => {
+export const Tabs = ({ setTab, activeTab }: TabsProps) => {
   return (
     <Container>
       {Object.values(TABS).map((tab) => (

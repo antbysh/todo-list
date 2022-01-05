@@ -2,13 +2,13 @@ import React, { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { Container, StyledInput, CancelIcon } from "./AddTask.styles";
-import { addTask, editTask } from "../tasksList/tasksListSlice";
 import { useAppDispatch } from "../../app/hooks";
 import { Button } from "../button/Button";
 import { ReactComponent as AddIcon } from "../../assets/icons/add.svg";
 import { TABS } from "../tabs/tabs.constants";
+import { addTask, editTask } from "../../app/redux/reducers/tasksListSlice";
 
-interface AddTaskTypes {
+interface AddTaskProps {
   currentTab?: string;
   editMode?: {
     id: string;
@@ -17,7 +17,7 @@ interface AddTaskTypes {
   };
 }
 
-export const AddTask = ({ editMode, currentTab }: AddTaskTypes) => {
+export const AddTask = ({ editMode, currentTab }: AddTaskProps) => {
   const dispatch = useAppDispatch();
   const [inputValue, setInputValue] = useState("");
   const [inputError, setInputError] = useState(false);
@@ -89,13 +89,13 @@ export const AddTask = ({ editMode, currentTab }: AddTaskTypes) => {
         autoFocus={Boolean(editMode)}
       />
       {editMode && (
-        <Button callback={exitEditMode} fill={"red"} border={"red"}>
+        <Button onClick={exitEditMode} fill={"red"} border={"red"}>
           <CancelIcon />
         </Button>
       )}
       <Button
         disabled={!inputValue.length}
-        callback={submitAction}
+        onClick={submitAction}
         fill={"green"}
         border={"green"}
       >

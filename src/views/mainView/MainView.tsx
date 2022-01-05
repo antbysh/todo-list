@@ -5,21 +5,22 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { Container, SearchInput, Wrapper } from "./MainView.styles";
 import { TasksList } from "../../components/tasksList/TasksList";
 import { useAppSelector } from "../../app/hooks";
+
+import { Tabs } from "../../components/tabs/Tabs";
+import { TABS } from "../../components/tabs/tabs.constants";
+import { Button } from "../../components/button/Button";
 import {
   selectAllTasks,
   selectCompletedTasks,
   selectUncompletedTasks,
-} from "../../components/tasksList/tasksListSlice";
-import { Tabs } from "../../components/tabs/Tabs";
-import { TaskTypes } from "../../components/task/Task";
-import { TABS } from "../../components/tabs/tabs.constants";
-import { Button } from "../../components/button/Button";
+} from "../../app/redux/reducers/tasksListSlice";
+import { TaskTypes } from "../../components/task/task.types";
 
-interface MainViewTypes {
+interface MainViewProps {
   handleThemeChange: () => void;
 }
 
-export const MainView = ({ handleThemeChange }: MainViewTypes) => {
+export const MainView = ({ handleThemeChange }: MainViewProps) => {
   const allTasks = useAppSelector(selectAllTasks);
   const completedTasks = useAppSelector(selectCompletedTasks);
   const uncompletedTasks = useAppSelector(selectUncompletedTasks);
@@ -39,7 +40,7 @@ export const MainView = ({ handleThemeChange }: MainViewTypes) => {
     }
   })();
 
-  const taskData = (data: TaskTypes[]) =>
+  const getSearchedTasksData = (data: TaskTypes[]) =>
     searchValue.length
       ? data.filter(({ title }) =>
           title.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
@@ -55,10 +56,15 @@ export const MainView = ({ handleThemeChange }: MainViewTypes) => {
           onChange={({ target }) => setSearchValue(target.value)}
           placeholder={"Search for tasks"}
         />
-        <Button callback={handleThemeChange} ariaLabel={'Switch theme'}>Switch Theme</Button>
+        <Button onClick={handleThemeChange} ariaLabel={"Switch theme"}>
+          Switch Theme
+        </Button>
       </Wrapper>
       <DndProvider backend={HTML5Backend}>
-        <TasksList data={taskData(tabData)} currentTab={currentTab} />
+        <TasksList
+          data={getSearchedTasksData(tabData)}
+          currentTab={currentTab}
+        />
       </DndProvider>
     </Container>
   );
