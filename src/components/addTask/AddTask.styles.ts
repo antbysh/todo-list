@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 import { TaskContainer } from "../task/Task.styles";
 import { ReactComponent as AddIcon } from "../../assets/icons/add.svg";
-import { ThemeTypes } from "../../utils/Theme";
 
 export const Container = styled(TaskContainer)`
   opacity: 0.7;
@@ -17,8 +16,8 @@ export const StyledInput = styled.input<{ error: boolean }>`
   font-size: 16px;
   flex: 1;
   padding: 2px 4px;
-  background-color: ${({ theme }: { theme: ThemeTypes }) => theme.background};
-  color: ${({ theme }: { theme: ThemeTypes }) => theme.text};
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
   transition: all 0.2s linear;
 
   ${({ error }) => error && "border-bottom: 1px solid red"};

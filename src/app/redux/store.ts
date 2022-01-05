@@ -1,6 +1,6 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import tasksListReducer from "../components/tasksList/tasksListSlice";
-import { loadState, saveState } from "../utils/LocalStorage";
+import { configureStore } from "@reduxjs/toolkit";
+import { loadState, saveState } from "../../utils/LocalStorage";
+import tasksListReducer from "./reducers/tasksListSlice";
 
 const preloadedState = loadState();
 export const store = configureStore({
@@ -18,9 +18,3 @@ store.subscribe(() => {
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;

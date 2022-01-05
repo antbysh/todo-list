@@ -1,4 +1,4 @@
-import { TaskTypes } from "../components/task/Task";
+import { TaskTypes } from "../components/task/task.types";
 
 export const loadState = () => {
   try {

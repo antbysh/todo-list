@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { ThemeTypes } from "../../utils/Theme";
 
 export const Container = styled.div`
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: ${({ theme }: { theme: ThemeTypes }) => theme.background};
+  background-color: ${({ theme }) => theme.background};
   transition: all 0.2s linear;
 `;
 
@@ -32,8 +31,8 @@ export const SearchInput = styled.input`
   width: 60%;
   border: none;
   border-bottom: 1px solid blueviolet;
-  background-color: ${({ theme }: { theme: ThemeTypes }) => theme.background};
-  color: ${({ theme }: { theme: ThemeTypes }) => theme.text};
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
   transition: all 0.2s linear;
 
   &:focus {

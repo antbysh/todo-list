@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import { ThemeTypes } from "../../utils/Theme";
 
 export const Container = styled.button<{ fill?: string; border?: string }>`
-  background-color: ${({ theme }: { theme: ThemeTypes }) => theme.background};
-  color: ${({ theme }: { theme: ThemeTypes }) => theme.text};
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
   border: 1px solid ${({ border }) => (border ? border : "blueviolet")};
   border-radius: 4px;
   display: flex;
   align-items: center;
-  box-shadow: 2px 2px 1px ${({ theme }: { theme: ThemeTypes }) => theme.shadow};
+  box-shadow: 2px 2px 1px ${({ theme }) => theme.shadow};
   padding: 4px;
   margin: 0 2px;
   cursor: pointer;
@@ -28,6 +27,6 @@ export const Container = styled.button<{ fill?: string; border?: string }>`
   svg {
     width: 16px;
     height: 16px;
-    fill: ${({ fill }) => (fill ? fill : "blueviolet")};
+    fill: ${({ fill }) => fill ?? "blueviolet"};
   }
 `;

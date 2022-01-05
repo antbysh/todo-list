@@ -8,14 +8,15 @@ import { ReactComponent as CompleteIcon } from "../../assets/icons/complete.svg"
 import { ReactComponent as IncompleteIcon } from "../../assets/icons/incomplete.svg";
 import { ReactComponent as EditIcon } from "../../assets/icons/edit.svg";
 import { useAppDispatch } from "../../app/hooks";
-import { changeTaskStatus, deleteTask } from "../tasksList/tasksListSlice";
 import { AddTask } from "../addTask/AddTask";
 import { Button } from "../button/Button";
+import {
+  changeTaskStatus,
+  deleteTask,
+} from "../../app/redux/reducers/tasksListSlice";
+import { TaskTypes } from "./task.types";
 
-export interface TaskTypes {
-  title: string;
-  id: string;
-  status: "complete" | "incomplete";
+interface TaskProps extends TaskTypes {
   dragMode?: {
     moveCard: (dragIndex: number, hoverIndex: number) => void;
     index: number;
@@ -28,7 +29,7 @@ interface DragItem {
   type: string;
 }
 
-export const Task = ({ title, id, status, dragMode }: TaskTypes) => {
+export const Task = ({ title, id, status, dragMode }: TaskProps) => {
   const dispatch = useAppDispatch();
   const [editMode, setEditMode] = useState(false);
   const ref = useRef<HTMLLIElement>(null);
@@ -104,14 +105,14 @@ export const Task = ({ title, id, status, dragMode }: TaskTypes) => {
         {title}
       </TaskTitle>
       <ActionWrapper>
-        <Button callback={() => setEditMode(true)} ariaLabel={"Edit task"}>
+        <Button onClick={() => setEditMode(true)} ariaLabel={"Edit task"}>
           <EditIcon />
         </Button>
-        <Button callback={() => handleDeleteTask(id)} ariaLabel={"Delete task"}>
+        <Button onClick={() => handleDeleteTask(id)} ariaLabel={"Delete task"}>
           <TrashIcon />
         </Button>
         <Button
-          callback={() => handleChangeStatus(id)}
+          onClick={() => handleChangeStatus(id)}
           ariaLabel={"Change task status"}
         >
           {isCompleted ? <CompleteIcon /> : <IncompleteIcon />}

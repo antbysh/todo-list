@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { ThemeTypes } from "../../utils/Theme";
 
 export const TaskContainer = styled.li<{ isDragging: boolean }>`
   border: 1px solid blueviolet;
   border-radius: 4px;
-  box-shadow: 2px 2px 1px ${({ theme }: { theme: ThemeTypes }) => theme.shadow};
+  box-shadow: 2px 2px 1px ${({ theme }) => theme.shadow};
   opacity: ${({ isDragging }) => Number(!isDragging)};
   padding: 12px;
   margin: 6px 0;
@@ -17,7 +16,6 @@ export const TaskContainer = styled.li<{ isDragging: boolean }>`
 
 export const TaskTitle = styled.span<{
   isCompleted: boolean;
-  theme: ThemeTypes;
 }>`
   display: flex;
   padding: 2px 4px;
